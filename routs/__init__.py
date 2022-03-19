@@ -1,0 +1,1 @@
+from .jobs_api import blueprint as jobs_blueprint
