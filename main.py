@@ -2,7 +2,7 @@ from data import db_session
 from flask import Flask, render_template, redirect, request, abort, make_response, jsonify
 from routs import jobs_blueprint
 from flask_restful import reqparse, abort, Api, Resource
-from resorces import UsersResource, UsersListResource
+from resorces import UsersResource, UsersListResource, JobsListResource, JobsResource
 
 app = Flask(__name__)
 api = Api(app)
@@ -18,6 +18,8 @@ def main():
     app.register_blueprint(jobs_blueprint)
     api.add_resource(UsersResource, '/api/v2/users/<int:user_id>')
     api.add_resource(UsersListResource, '/api/v2/users')
+    api.add_resource(JobsResource, 'api/v2/jobs/<int:job_id>')
+    api.add_resource(JobsListResource, 'api/v2/jobs')
     app.run()
 
 
